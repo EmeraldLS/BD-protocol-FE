@@ -1,0 +1,17 @@
+---
+import type { Task } from "../utils/constants";
+const { id, title }: Task = Astro.props;
+
+interface Props {
+  id: number;
+  title: string;
+  completed: boolean;
+}
+---
+
+<a
+  href=`/tasks/${id}`
+  class="py-3 px-2 flex items-center justify-center border mx-2"
+>
+  Task Card
+</a>

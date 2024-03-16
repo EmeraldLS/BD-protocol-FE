@@ -1,0 +1,98 @@
+---
+import TaskCard from "./TaskCard.astro";
+import { STATIC_TASKS, paths } from "../utils/constants";
+
+const locationPath = Astro.url.pathname;
+const { slug } = Astro.params;
+
+const renderPageSideBar = (path: string) => {
+  switch (locationPath) {
+    case "/":
+      return "Home";
+
+    case "/tasks":
+      return "Home/Tasks";
+
+    case "/teams":
+      return "Home/Teams";
+
+    case `/tasks/${slug}`:
+      return `Home/Tasks/${slug}`;
+    default:
+      break;
+  }
+  return "";
+};
+---
+
+<div class="left-0 h-screen bg-feintWhite w-[20%] fixed">
+  <div class="relative flex flex-col gap-5 mt-20">
+    <button
+      id="dropdownDefaultButton"
+      data-dropdown-toggle="dropdown"
+      class="bg-gray-300 flex items-center gap-2 py-2 px-5"
+      type="button"
+      >{() => renderPageSideBar(locationPath)}
+      <svg
+        class="w-2.5 h-2.5 mt-1"
+        aria-hidden="true"
+        xmlns="http://www.w3.org/2000/svg"
+        fill="none"
+        viewBox="0 0 10 6"
+      >
+        <path
+          stroke="currentColor"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          d="m1 1 4 4 4-4"></path>
+      </svg>
+    </button>
+    <div
+      id="dropdown"
+      class="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-52 dark:bg-gray-700 mx-10"
+    >
+      <ul
+        class="py-2 text-sm text-gray-700 dark:text-gray-200"
+        aria-labelledby="dropdownDefaultButton"
+      >
+        {
+          paths
+            .filter((currPath) => currPath.path !== locationPath)
+            .map((currPath) => (
+              <li>
+                <a
+                  href={`${currPath.path}`}
+                  class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+                >
+                  {currPath.name}
+                </a>
+              </li>
+            ))
+        }
+      </ul>
+    </div>
+    <div>
+      {
+        locationPath == "/tasks" || locationPath == `/tasks/${slug}` ? (
+          <div>
+            <div class="py-3 border mx-3 rounded-lg">
+              <div class="border-b-2 border-gray-300 pb-3">
+                <a href="/tasks" class="ml-3 text-lg text-[#4169E1]">
+                  Tasks
+                </a>
+              </div>
+              <div class="flex flex-col gap-4 mt-3">
+                {STATIC_TASKS.map((task) => (
+                  <TaskCard {...task} />
+                ))}
+              </div>
+            </div>
+          </div>
+        ) : (
+          ""
+        )
+      }
+    </div>
+  </div>
+</div>
