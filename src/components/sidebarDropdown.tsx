@@ -1,4 +1,5 @@
 import { CreditCard, User, Home } from "lucide-react";
+import { FaChevronRight } from "react-icons/fa";
 
 import { Button } from "@/components/ui/button";
 import {
@@ -20,8 +21,11 @@ export function DropdownMenuDemo({ path }: SidebarDropdownProps) {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <Button variant="outline" className=" text-lg">
-          {path}
+        <Button
+          variant="outline"
+          className=" text-lg flex gap-2 items-center w-full"
+        >
+          {path} <FaChevronRight />
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent className="w-56">
