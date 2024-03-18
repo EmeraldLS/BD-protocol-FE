@@ -3,6 +3,10 @@ import { SITE_DESCRIPTION, SITE_NAME } from "../utils/constants.ts";
 import Navbar from "../components/Navbar.astro";
 import Footer from "../components/Footer.astro";
 import Sidebar from "../components/Sidebar.astro";
+import type { CollectionEntry } from "astro:content";
+import { getCollection } from "astro:content";
+
+const alltasks: CollectionEntry<"tasks">[] = await getCollection("tasks");
 
 const { title } = Astro.props;
 
@@ -32,7 +36,7 @@ interface Props {
     <Navbar />
     <div class="flex gap-5 relative">
       <div class="w-[20%]">
-        <Sidebar />
+        <Sidebar tasks={alltasks} />
       </div>
       <div class="mt-20 overflow-y-auto">
         <slot />

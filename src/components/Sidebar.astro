@@ -1,12 +1,13 @@
 ---
 import TaskCard from "./TaskCard.astro";
-import { STATIC_TASKS, paths } from "../utils/constants";
+import { paths } from "../utils/constants";
+import type { CollectionEntry } from "astro:content";
 
 const locationPath = Astro.url.pathname;
 const { slug } = Astro.params;
 
 const renderPageSideBar = (path: string) => {
-  switch (locationPath) {
+  switch (path) {
     case "/":
       return "Home";
 
@@ -23,6 +24,12 @@ const renderPageSideBar = (path: string) => {
   }
   return "";
 };
+
+const { tasks } = Astro.props;
+
+interface Props {
+  tasks: CollectionEntry<"tasks">[];
+}
 ---
 
 <div class="left-0 h-screen bg-feintWhite w-[20%] fixed">
@@ -74,7 +81,7 @@ const renderPageSideBar = (path: string) => {
     </div>
     <div>
       {
-        locationPath == "/tasks" || locationPath == `/tasks/${slug}` ? (
+        locationPath == "/tasks" && (
           <div>
             <div class="py-3 border mx-3 rounded-lg">
               <div class="border-b-2 border-gray-300 pb-3">
@@ -82,15 +89,21 @@ const renderPageSideBar = (path: string) => {
                   Tasks
                 </a>
               </div>
-              <div class="flex flex-col gap-4 mt-3">
-                {STATIC_TASKS.map((task) => (
-                  <TaskCard {...task} />
+              <div class="flex flex-col gap-4 mt-3 max-h-[30vh] overflow-y-auto">
+                {tasks?.map((task) => (
+                  <TaskCard {...task.data} />
                 ))}
               </div>
             </div>
           </div>
-        ) : (
-          ""
+        )
+      }
+
+      {
+        locationPath == `/tasks/${slug}` && (
+          <div class="text-sm pt-5 px-3 sm:max-w-[70%]">
+            <h1>Mini content about the current task</h1>
+          </div>
         )
       }
     </div>

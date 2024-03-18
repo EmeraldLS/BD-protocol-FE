@@ -1,17 +1,21 @@
 ---
-import type { Task } from "../utils/constants";
-const { id, title }: Task = Astro.props;
+import type { CollectionEntry } from "astro:content";
+const { id, title, status }: CollectionEntry<"tasks"> = Astro.props;
 
 interface Props {
   id: number;
   title: string;
-  completed: boolean;
+  status: string;
 }
 ---
 
 <a
   href=`/tasks/${id}`
-  class="py-3 px-2 flex items-center justify-center border mx-2"
+  class="py-3 px-2 flex justify-between items-center border mx-2"
 >
-  Task Card
+  <span class="font-bold text-sm">{title}</span>
+  <span class="ml-2 w-6 h-6 rounded-full flex items-center justify-center">
+    <span class="text-white text-sm">{status == "completed" ? "✅" : "❌"}</span
+    >
+  </span>
 </a>
