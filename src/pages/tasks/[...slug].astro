@@ -1,7 +1,20 @@
 ---
+import { getEntry, type CollectionEntry } from "astro:content";
 import DashBoardLayout from "../../layouts/DashBoardLayout.astro";
+
+const { slug } = Astro.params;
+
+const {
+  data: { title, id, status },
+}: CollectionEntry<"tasks"> = await getEntry("tasks", `task_${slug!}`);
 ---
 
 <DashBoardLayout>
-  <h1>Task Content</h1>
+  <h1 class="text-lg font-semibold">
+    {title}
+  </h1>
+  <p class="text-sm text-gray-500">
+    Status = {status}
+    {status === "completed" ? "✅" : "❌"}
+  </p>
 </DashBoardLayout>

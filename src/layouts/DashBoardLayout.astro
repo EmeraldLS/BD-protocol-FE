@@ -5,6 +5,8 @@ import Footer from "../components/Footer.astro";
 import Sidebar from "../components/Sidebar.astro";
 import type { CollectionEntry } from "astro:content";
 import { getCollection } from "astro:content";
+import { ViewTransitions } from "astro:transitions";
+import "@/styles/global.css";
 
 const alltasks: CollectionEntry<"tasks">[] = await getCollection("tasks");
 
@@ -15,14 +17,13 @@ interface Props {
 }
 ---
 
-<html lang="en">
+<html lang="en" transition:animate="slide">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width" />
     <meta name="robots" content="index, follow" />
     <meta name="description" content={SITE_DESCRIPTION} />
     <meta name="generator" content={Astro.generator} />
-
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <script
       src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.2.0/flowbite.js"
@@ -31,6 +32,7 @@ interface Props {
       referrerpolicy="no-referrer"
       is:inline></script>
     <title>{title != null ? `${title} - ` : ""} {SITE_NAME}</title>
+    <ViewTransitions />
   </head>
   <body>
     <Navbar />

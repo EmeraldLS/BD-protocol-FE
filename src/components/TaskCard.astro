@@ -1,6 +1,8 @@
 ---
-import type { CollectionEntry } from "astro:content";
-const { id, title, status }: CollectionEntry<"tasks"> = Astro.props;
+import { FaEye } from "react-icons/fa";
+import { IoSettingsOutline } from "react-icons/io5";
+
+const { title, status, id } = Astro.props;
 
 interface Props {
   id: number;
@@ -9,13 +11,20 @@ interface Props {
 }
 ---
 
-<a
-  href=`/tasks/${id}`
-  class="py-3 px-2 flex justify-between items-center border mx-2"
->
-  <span class="font-bold text-sm">{title}</span>
-  <span class="ml-2 w-6 h-6 rounded-full flex items-center justify-center">
-    <span class="text-white text-sm">{status == "completed" ? "✅" : "❌"}</span
+<div class="mx-2 gap-3 flex justify-between items-center border py-5 px-2">
+  <span class="text-lg">{title}</span>
+  <div class="text-sm flex gap-3">
+    <a
+      href=`/tasks/${id}`
+      class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-2 rounded flex items-center justify-center transition-all"
     >
-  </span>
-</a>
+      <FaEye className="text-xs" />
+    </a>
+    <a
+      href=`/tasks/${id}`
+      class="bg-red-500 hover:bg-red-700 text-white font-bold py-1 px-2 rounded flex items-center justify-center"
+    >
+      <IoSettingsOutline className="text-xs" />
+    </a>
+  </div>
+</div>

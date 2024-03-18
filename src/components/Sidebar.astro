@@ -1,4 +1,6 @@
 ---
+import { FaChevronDown } from "react-icons/fa";
+
 import TaskCard from "./TaskCard.astro";
 import { paths } from "../utils/constants";
 import type { CollectionEntry } from "astro:content";
@@ -6,7 +8,7 @@ import type { CollectionEntry } from "astro:content";
 const locationPath = Astro.url.pathname;
 const { slug } = Astro.params;
 
-const renderPageSideBar = (path: string) => {
+const renderPath = (path: string) => {
   switch (path) {
     case "/":
       return "Home";
@@ -39,21 +41,7 @@ interface Props {
       data-dropdown-toggle="dropdown"
       class="bg-gray-300 flex items-center gap-2 py-2 px-5"
       type="button"
-      >{() => renderPageSideBar(locationPath)}
-      <svg
-        class="w-2.5 h-2.5 mt-1"
-        aria-hidden="true"
-        xmlns="http://www.w3.org/2000/svg"
-        fill="none"
-        viewBox="0 0 10 6"
-      >
-        <path
-          stroke="currentColor"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-          stroke-width="2"
-          d="m1 1 4 4 4-4"></path>
-      </svg>
+      >{() => renderPath(locationPath)} <FaChevronDown />
     </button>
     <div
       id="dropdown"
@@ -101,11 +89,19 @@ interface Props {
 
       {
         locationPath == `/tasks/${slug}` && (
-          <div class="text-sm pt-5 px-3 sm:max-w-[70%]">
-            <h1>Mini content about the current task</h1>
-          </div>
+          <>
+            <div class="border-b-2 border-gray-300 pb-3">
+              <a href="/tasks" class="ml-3 text-lg text-[#4169E1]">
+                Tasks
+              </a>
+            </div>
+            <div class="text-sm pt-5 px-3 sm:max-w-[70%]">
+              <h1>Mini content about the current task</h1>
+            </div>
+          </>
         )
       }
     </div>
   </div>
 </div>
+@/components/dropDown.jsx
