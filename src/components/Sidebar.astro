@@ -14,13 +14,15 @@ const renderPath = (path: string) => {
       return "Home";
 
     case "/tasks":
-      return "Home/Tasks";
+      return "Tasks";
 
     case "/teams":
-      return "Home/Teams";
+      return "Teams";
+    case "/plugins":
+      return "Plugins";
 
     case `/tasks/${slug}`:
-      return `Home/Tasks/${slug}`;
+      return `Tasks / ${slug}`;
     default:
       break;
   }

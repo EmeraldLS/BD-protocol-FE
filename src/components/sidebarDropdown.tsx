@@ -20,7 +20,9 @@ export function DropdownMenuDemo({ path }: SidebarDropdownProps) {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <Button variant="outline">{path}</Button>
+        <Button variant="outline" className=" text-lg">
+          {path}
+        </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent className="w-56">
         <DropdownMenuLabel>My Account</DropdownMenuLabel>
@@ -37,6 +39,10 @@ export function DropdownMenuDemo({ path }: SidebarDropdownProps) {
           <DropdownMenuItem onClick={() => navigate("/teams")}>
             <CreditCard className="mr-2 h-4 w-4" />
             <span>Teams</span>
+          </DropdownMenuItem>
+          <DropdownMenuItem onClick={() => navigate("/plugins")}>
+            <CreditCard className="mr-2 h-4 w-4" />
+            <span>Plugins</span>
           </DropdownMenuItem>
         </DropdownMenuGroup>
       </DropdownMenuContent>
