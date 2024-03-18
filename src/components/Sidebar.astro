@@ -1,9 +1,9 @@
 ---
 import { FaChevronDown } from "react-icons/fa";
-
 import TaskCard from "./TaskCard.astro";
 import { paths } from "../utils/constants";
 import type { CollectionEntry } from "astro:content";
+import { DropdownMenuDemo } from "@/components/sidebarDropdown";
 
 const locationPath = Astro.url.pathname;
 const { slug } = Astro.params;
@@ -36,7 +36,8 @@ interface Props {
 
 <div class="left-0 h-screen bg-feintWhite w-[20%] fixed">
   <div class="relative flex flex-col gap-5 mt-20">
-    <button
+    <DropdownMenuDemo path={renderPath(locationPath)} client:load />
+    <!-- <button
       id="dropdownDefaultButton"
       data-dropdown-toggle="dropdown"
       class="bg-gray-300 flex items-center gap-2 py-2 px-5"
@@ -66,7 +67,7 @@ interface Props {
             ))
         }
       </ul>
-    </div>
+    </div> -->
     <div>
       {
         locationPath == "/tasks" && (
