@@ -1,7 +1,11 @@
 ---
-import Dashboard from "../layouts/DashBoardLayout.astro";
+import { supabase } from "@/lib/supabase";
+import MainLayout from "../layouts/MainLayout.astro";
 ---
 
-<Dashboard title="User Dashboard">
-  <h1>This is the dashboard</h1>
-</Dashboard>
+<MainLayout title="User Dashboard">
+  <div class="flex gap-3">
+    <a href="/signin" class="text-blue-400 underline">Sign in </a>
+    <a href="/register" class="text-blue-400 underline">Register </a>
+  </div>
+</MainLayout>

@@ -1,0 +1,53 @@
+---
+import MainLayout from "../layouts/MainLayout.astro";
+---
+
+<MainLayout title="Register">
+  <h1 class="text-2xl font-bold mb-4">Register</h1>
+  <p class="mb-4">
+    Already have an account? <a href="/signin" class="text-blue-500">Sign in</a>
+  </p>
+  <form action="/api/auth/register" method="post">
+    <div class="grid md:grid-cols-2 gap-2">
+      <div>
+        <label for="fname" class="block mb-2">First name</label>
+        <input
+          type="text"
+          name="fname"
+          id="fname"
+          class="border border-gray-300 rounded-md px-4 py-2 mb-4 w-full"
+        />
+      </div>
+      <div>
+        <label for="lname" class="block mb-2">Last name</label>
+        <input
+          type="text"
+          name="lname"
+          id="lname"
+          class="border border-gray-300 rounded-md px-4 py-2 mb-4 w-full"
+        />
+      </div>
+    </div>
+    <div>
+      <label for="email" class="block mb-2">Email</label>
+      <input
+        type="email"
+        name="email"
+        id="email"
+        class="border border-gray-300 rounded-md px-4 py-2 mb-4 w-full"
+      />
+    </div>
+    <div>
+      <label for="password" class="block mb-2">Password</label>
+      <input
+        type="password"
+        name="password"
+        id="password"
+        class="border border-gray rounded-md px-4 py-2 mb-4 w-full"
+      />
+    </div>
+    <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded-md"
+      >Register</button
+    >
+  </form>
+</MainLayout>

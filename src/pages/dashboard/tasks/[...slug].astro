@@ -6,7 +6,7 @@ const { slug } = Astro.params;
 
 const {
   data: { title, id, status },
-}: CollectionEntry<"tasks"> = await getEntry("tasks", `task_${slug!}`);
+}: CollectionEntry<"tasks"> = await getEntry("tasks", `task_${slug}`);
 ---
 
 <DashBoardLayout>
