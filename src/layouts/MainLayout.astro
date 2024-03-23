@@ -5,6 +5,15 @@ import { ViewTransitions } from "astro:transitions";
 import "@/styles/global.css";
 
 const { title } = Astro.props;
+// try {
+//   const ogImageURL = new URL("/dollar.png", Astro.site).href;
+//   console.log("OG Image URL:", ogImageURL);
+
+//   const canonicalURL = new URL(Astro.url).href;
+//   console.log("Canonical URL:", canonicalURL);
+// } catch (error) {
+//   console.error("Error:", error);
+// }
 
 interface Props {
   title?: string;
@@ -19,6 +28,14 @@ interface Props {
     <meta name="description" content={SITE_DESCRIPTION} />
     <meta name="generator" content={Astro.generator} />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <!-- <meta property="twitter:image" content={ogImageURL} /> -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:title" content={title} />
+    <meta property="twitter:description" content={SITE_DESCRIPTION} />
+    <!-- <meta property="og:image" content={ogImageURL} /> -->
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={SITE_DESCRIPTION} />
+    <!-- <meta property="og:url" content={canonicalURL} /> -->
     <script
       src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.2.0/flowbite.js"
       integrity="sha512-BJ/5sR2hFxQTKin/55JQCcMTObShDBAmVjL/3NR/MVcrhyOazJjAgvROem03+HYyGw16SVdSfoWCFGr9syxAKA=="
@@ -29,7 +46,7 @@ interface Props {
     <ViewTransitions />
   </head>
   <body
-    class="flex items-center justify-center min-h-screen w-full bg-zinc-800"
+    class="flex items-center justify-center min-h-screen w-full bg-zinc-800 px-5"
   >
     <main
       class="w-full sm:w-[80%] h-[80vh] bg-white rounded-2xl p-5 grid sm:grid-cols-2 gap-0"
