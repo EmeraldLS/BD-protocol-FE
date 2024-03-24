@@ -37,44 +37,13 @@ interface Props {
 <div class="left-0 h-screen bg-feintWhite w-[20%] fixed">
   <div class="relative flex flex-col gap-5 mt-20 mx-5">
     <DropdownMenuDemo path={renderPath(locationPath)} client:load />
-    <!-- <button
-      id="dropdownDefaultButton"
-      data-dropdown-toggle="dropdown"
-      class="bg-gray-300 flex items-center gap-2 py-2 px-5"
-      type="button"
-      >{() => renderPath(locationPath)} <FaChevronDown />
-    </button>
-    <div
-      id="dropdown"
-      class="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-52 dark:bg-gray-700 mx-10"
-    >
-      <ul
-        class="py-2 text-sm text-gray-700 dark:text-gray-200"
-        aria-labelledby="dropdownDefaultButton"
-      >
-        {
-          paths
-            .filter((currPath) => currPath.path !== locationPath)
-            .map((currPath) => (
-              <li>
-                <a
-                  href={`${currPath.path}`}
-                  class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
-                >
-                  {currPath.name}
-                </a>
-              </li>
-            ))
-        }
-      </ul>
-    </div> -->
     <div>
       {
-        locationPath == "/tasks" && (
+        locationPath == "/dashboard/tasks" && (
           <div>
             <div class="py-3 border rounded-lg">
               <div class="border-b-2 border-gray-300 pb-3">
-                <a href="/tasks" class="ml-3 text-lg text-[#4169E1]">
+                <a href="/dashboard/tasks" class="ml-3 text-lg text-[#4169E1]">
                   Tasks
                 </a>
               </div>
@@ -92,7 +61,7 @@ interface Props {
         locationPath == `/tasks/${slug}` && (
           <>
             <div class="border-b-2 border-gray-300 pb-3">
-              <a href="/tasks" class="ml-3 text-lg text-[#4169E1]">
+              <a href="/dashboard/tasks" class="ml-3 text-lg text-[#4169E1]">
                 Tasks
               </a>
             </div>

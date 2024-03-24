@@ -20,7 +20,7 @@ interface Props {
 }
 ---
 
-<html lang="en" transition:animate="slide">
+<html lang="en">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width" />
@@ -43,7 +43,6 @@ interface Props {
       referrerpolicy="no-referrer"
       is:inline></script>
     <title>{title != null ? `${title} - ` : ""} {SITE_NAME}</title>
-    <ViewTransitions />
   </head>
   <body
     class="flex items-center justify-center min-h-screen w-full bg-zinc-800 px-5"

@@ -32,19 +32,19 @@ export function DropdownMenuDemo({ path }: SidebarDropdownProps) {
         <DropdownMenuLabel>My Account</DropdownMenuLabel>
         <DropdownMenuSeparator />
         <DropdownMenuGroup>
-          <DropdownMenuItem onClick={() => navigate("/")}>
+          <DropdownMenuItem onClick={() => navigate("/dashboard")}>
             <Home className="mr-2 h-4 w-4" />
             <span>Home</span>
           </DropdownMenuItem>
-          <DropdownMenuItem onClick={() => navigate("/tasks")}>
+          <DropdownMenuItem onClick={() => navigate("/dashboard/tasks")}>
             <User className="mr-2 h-4 w-4" />
             <span>Tasks</span>
           </DropdownMenuItem>
-          <DropdownMenuItem onClick={() => navigate("/teams")}>
+          <DropdownMenuItem onClick={() => navigate("/dashboard/teams")}>
             <CreditCard className="mr-2 h-4 w-4" />
             <span>Teams</span>
           </DropdownMenuItem>
-          <DropdownMenuItem onClick={() => navigate("/plugins")}>
+          <DropdownMenuItem onClick={() => navigate("/dashboard/plugins")}>
             <CreditCard className="mr-2 h-4 w-4" />
             <span>Plugins</span>
           </DropdownMenuItem>

@@ -7,7 +7,7 @@ import MainLayout from "../layouts/MainLayout.astro";
   <p class="mb-4">
     Already have an account? <a href="/signin" class="text-blue-500">Sign in</a>
   </p>
-  <form action="/api/auth/register" method="post">
+  <form action="/api/auth/register" method="POST">
     <div class="grid md:grid-cols-2 gap-2">
       <div>
         <label for="fname" class="block mb-2">First name</label>
@@ -46,8 +46,7 @@ import MainLayout from "../layouts/MainLayout.astro";
         class="border border-gray rounded-md px-4 py-2 mb-4 w-full"
       />
     </div>
-    <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded-md"
-      >Register</button
+    <button class="bg-blue-500 text-white px-4 py-2 rounded-md">Register</button
     >
   </form>
 </MainLayout>
